@@ -1,0 +1,61 @@
+/* Aplicar estilos globales */
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%; /* Asegura que ocupe toda la altura del viewport */
+    background-color: black; /* Fondo negro */
+    color: white; /* Texto blanco */
+    font-family: Arial, sans-serif; /* Fuente global */
+}
+
+/* Elimina márgenes de todos los elementos */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Asegúrate de que #root y el contenedor principal ocupen toda la altura */
+#root, #app-content {
+    height: 100%;
+}
+
+/* Estilo del menú desplegable */
+.Select-menu-outer {
+    background-color: black !important; /* Fondo negro para las opciones */
+    color: white !important; /* Texto blanco */
+}
+
+/* Opciones individuales */
+.Select-option {
+    background-color: black; /* Fondo negro */
+    color: white; /* Texto blanco */
+}
+
+.Select-option:hover {
+    background-color: #333333; /* Fondo gris oscuro al pasar el cursor */
+}
+
+/* Ajuste de la opción seleccionada */
+.Select-single-value {
+    color: white; /* Texto blanco de la opción seleccionada */
+}
+.link-container {
+    display: flex;          /* Alinea los enlaces horizontalmente */
+    gap: 15px;              /* Espacio entre enlaces */
+    margin-top: 10px;       /* Espaciado superior */
+}
+
+/* Estilo de los enlaces */
+.custom-link {
+    color: white;           /* Texto blanco */
+    text-decoration: none;  /* Quita el subrayado */
+    font-size: 16px;        /* Tamaño del texto */
+    font-family: Arial, sans-serif; /* Fuente */
+}
+
+/* Hover para los enlaces */
+.custom-link:hover {
+    text-decoration: underline; /* Subrayado al pasar el cursor */
+    color: lightblue;           /* Cambia el color al pasar el cursor */
+}
