@@ -1,5 +1,5 @@
 flask
 pandas
 dash
-sys
-google.cloud 
+google-cloud-storage
+numpy

@@ -1,18 +1,20 @@
 from flask import Flask
 import pandas as pd
-import os
 import numpy as np
 from google.cloud import storage
 from io import StringIO
+import os
 
 #editar script para hacer llamado a google storage
-
 app = Flask(__name__)
 
 def get_correlacion_data():
     # Lee el archivo CSV en la misma carpeta
     try:
-        client = storage.Client()
+        credentials_path = os.getenv('GOOGLE_APPLICATION_CREDENTIALS')
+
+        # Usar las credenciales en Google Cloud Storage
+        client = storage.Client.from_service_account_json(credentials_path)
 
         # Especifica el nombre del bucket y el archivo CSV
         bucket_name = "csv_correlacion"
