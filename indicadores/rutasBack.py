@@ -5,8 +5,6 @@ from cpi import get_cpi_data
 from tasas_de_interes import get_tasas_data
 from consumidor import get_sentimiento_data
 from pib import get_pib_data
-import sys
-sys.path.append(r"C://Users/marti/AppData/Roaming/MetaQuotes/Terminal/010E047102812FC0C18890992854220E/MQL5/Files/Research")
 from script import get_correlacion_data
 import pandas as pd
 

@@ -1,0 +1,5 @@
+flask
+pandas
+dash
+sys
+google.cloud 
