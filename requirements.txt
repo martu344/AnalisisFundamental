@@ -3,3 +3,4 @@ pandas
 dash
 google-cloud-storage
 numpy
+gunicorn
