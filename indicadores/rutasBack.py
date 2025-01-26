@@ -602,6 +602,7 @@ def update_graphs(selected_market,selected_market2,selected_market3):
         url = f"http://127.0.0.1:5000/cot-data?market={selected_market}"
     
     response = requests.get(url)
+    print(response.json())
     data = response.json()
     df_filtrada = data["filtrada"]
     df_completa= data["completa"]
@@ -761,9 +762,6 @@ def update_graphs(selected_market,selected_market2,selected_market3):
         },
     }
     return fig1, fig2, fig3, fig4
-
-if __name__ == '__main__':
-    app.run_server(debug=True)
 
 # Ruta CPI
 @server.route('/cpi-data', methods=['GET'])
