@@ -4,11 +4,9 @@ from dash.dependencies import Input, Output
 import requests
 import pandas as pd
 import os
-# Aplicación Dash
-app = dash.Dash(__name__, suppress_callback_exceptions=True)  
 
 # Layout con varias páginas
-app.layout = html.Div( style={
+layout = html.Div( style={
         'backgroundColor': 'black',  # Fondo azul oscuro opaco
         'color': 'white',             # Texto blanco para contraste
         'fontFamily': 'Arial',        # Cambiar la fuente
@@ -245,6 +243,7 @@ def page_3():
                 }
             ])
         ])
+
 
 # Callback para cambiar el contenido de la página basado en la URL
 @app.callback(
