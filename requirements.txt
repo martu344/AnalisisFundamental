@@ -4,3 +4,4 @@ dash
 google-cloud-storage
 numpy
 gunicorn
+cot_reports
