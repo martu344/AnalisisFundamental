@@ -1,11 +1,11 @@
 from flask import Flask, jsonify, request
-from desempleo import get_desempleo_data
-from cot import get_cot_data
-from cpi import get_cpi_data
-from tasas_de_interes import get_tasas_data
-from consumidor import get_sentimiento_data
-from pib import get_pib_data
-from script import get_correlacion_data
+from .desempleo import get_desempleo_data
+from .cot import get_cot_data
+from .cpi import get_cpi_data
+from .tasas_de_interes import get_tasas_data
+from .consumidor import get_sentimiento_data
+from .pib import get_pib_data
+from .script import get_correlacion_data
 import pandas as pd
 
 app = Flask(__name__)
