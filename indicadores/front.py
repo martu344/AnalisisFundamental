@@ -3,6 +3,7 @@ from dash import dcc, html, dash_table
 from dash.dependencies import Input, Output
 import requests
 import pandas as pd
+import os
 # Aplicación Dash
 app = dash.Dash(__name__, suppress_callback_exceptions=True)  
 
@@ -266,12 +267,16 @@ def display_page(pathname):
         Output('correlation-table2', 'data')],
         [Input('load-data-btn', 'n_clicks'),
         Input('url', 'pathname')])
-
 def update_correlacion_table(n_clicks, pathname):
     if pathname != '/page-3':
         return dash.no_update
     if n_clicks > 0:
-        url = f"http://127.0.0.1:5000/correlacion-data"
+        if os.environ.get('RENDER_EXTERNAL_URL'):
+        # Esto es para cuando está en Render
+            url = f"{os.environ.get('RENDER_EXTERNAL_URL')}/correlacion-data"
+        else:
+            # Esto es para cuando está localmente
+            url = f"http://127.0.0.1:5000/correlacion-data"
         response = requests.get(url)
         if response.status_code != 200:
             return {
@@ -305,8 +310,12 @@ def update_correlacion_table(n_clicks, pathname):
 def update_unemployment_graph(pathname,selected_market):
     if pathname != '/page-2':
         return dash.no_update
-
-    url = f"http://127.0.0.1:5000/desempleo-data?market={selected_market}"
+    if os.environ.get('RENDER_EXTERNAL_URL'):
+        # Esto es para cuando está en Render
+        url = f"{os.environ.get('RENDER_EXTERNAL_URL')}/desempleo-data?market={selected_market}"
+    else:
+        # Esto es para cuando está localmente
+        url = f"http://127.0.0.1:5000/desempleo-data?market={selected_market}"
     response = requests.get(url)
     if response.status_code != 200:
         return {
@@ -354,7 +363,12 @@ def update_cpi_graph(pathname,selected_market):
         return dash.no_update
     if not selected_market:  # Si no hay selección, no hace nada
         return dash.no_update, dash.no_update
-    url = f"http://127.0.0.1:5000/cpi-data?market={selected_market}"
+    if os.environ.get('RENDER_EXTERNAL_URL'):
+        # Esto es para cuando está en Render
+        url = f"{os.environ.get('RENDER_EXTERNAL_URL')}/cpi-data?market={selected_market}"
+    else:
+        # Esto es para cuando está localmente
+        url = f"http://127.0.0.1:5000/cpi-data?market={selected_market}"
     response = requests.get(url)
     if response.status_code != 200:
         return {
@@ -402,7 +416,13 @@ def update_sentimiento_graph(pathname,selected_market):
         return dash.no_update
     if not selected_market:  # Si no hay selección, no hace nada
         return dash.no_update, dash.no_update
-    url = f"http://127.0.0.1:5000/sentimiento-data?market={selected_market}"
+    if os.environ.get('RENDER_EXTERNAL_URL'):
+        # Esto es para cuando está en Render
+        url = f"{os.environ.get('RENDER_EXTERNAL_URL')}/sentimiento-data?market={selected_market}"
+    else:
+        # Esto es para cuando está localmente
+        url = f"http://127.0.0.1:5000/sentimiento-data?market={selected_market}"
+    
     response = requests.get(url)
     if response.status_code != 200:
         return {
@@ -450,7 +470,13 @@ def update_tasas_graph(pathname,selected_market):
         return dash.no_update
     if not selected_market:  # Si no hay selección, no hace nada
         return dash.no_update, dash.no_update
-    url = f"http://127.0.0.1:5000/tasas-data?market={selected_market}"
+    if os.environ.get('RENDER_EXTERNAL_URL'):
+        # Esto es para cuando está en Render
+        url = f"{os.environ.get('RENDER_EXTERNAL_URL')}/tasas-data?market={selected_market}"
+    else:
+        # Esto es para cuando está localmente
+        url = f"http://127.0.0.1:5000/tasas-data?market={selected_market}"
+    
     response = requests.get(url)
     if response.status_code != 200:
         return {
@@ -498,7 +524,13 @@ def update_pib_graph(pathname,selected_market):
         return dash.no_update
     if not selected_market:  # Si no hay selección, no hace nada
         return dash.no_update, dash.no_update
-    url = f"http://127.0.0.1:5000/pib-data?market={selected_market}"
+    if os.environ.get('RENDER_EXTERNAL_URL'):
+        # Esto es para cuando está en Render
+        url = f"{os.environ.get('RENDER_EXTERNAL_URL')}/pib-data?market={selected_market}"
+    else:
+        # Esto es para cuando está localmente
+        url = f"http://127.0.0.1:5000/pib-data?market={selected_market}"
+    
     response = requests.get(url)
     if response.status_code != 200:
         return {
@@ -548,7 +580,13 @@ def update_pib_graph(pathname,selected_market):
 def update_graphs(selected_market,selected_market2,selected_market3):
     if not selected_market:  # Si no hay selección, no hace nada
         return dash.no_update, dash.no_update
-    url = f"http://127.0.0.1:5000/cot-data?market={selected_market}"
+    if os.environ.get('RENDER_EXTERNAL_URL'):
+        # Esto es para cuando está en Render
+        url = f"{os.environ.get('RENDER_EXTERNAL_URL')}/cot-data?market={selected_market}"
+    else:
+        # Esto es para cuando está localmente
+        url = f"http://127.0.0.1:5000/cot-data?market={selected_market}"
+    
     response = requests.get(url)
     data = response.json()
     df_filtrada = data["filtrada"]

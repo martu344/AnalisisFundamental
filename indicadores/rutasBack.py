@@ -7,8 +7,16 @@ from .consumidor import get_sentimiento_data
 from .pib import get_pib_data
 from .script import get_correlacion_data
 import pandas as pd
+from .front import page_1
+import os
+
+port = int(os.environ.get('PORT', 5000))
 
 app = Flask(__name__)
+
+@app.route('/')
+def page():
+    return page_1()
 
 # Ruta CPI
 @app.route('/cpi-data', methods=['GET'])
@@ -89,7 +97,7 @@ def correlacion_data():
         return jsonify({"error": str(e)}), 400
           
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host='0.0.0.0', port=10000, debug=True)
 
 #cad_porcentajeInteresAbierto= cad["Open_Interest_All"] 
 #cad_porcentajeLargos= cad["Pct_of_OI_Dealer_Long_All"]
