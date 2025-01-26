@@ -14,9 +14,9 @@ port = int(os.environ.get('PORT', 5000))
 
 app = Flask(__name__)
 
-#@app.route('/')
-#def page():
-#    return page_1()
+@app.route('/')
+def home():
+    return "¡La aplicación está en funcionamiento!"
 
 # Ruta CPI
 @app.route('/cpi-data', methods=['GET'])
